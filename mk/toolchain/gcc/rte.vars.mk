@@ -104,7 +104,11 @@ ifeq ($(shell test $(GCC_VERSION) -gt 70 && echo 1), 1)
 WERROR_FLAGS += -Wimplicit-fallthrough=0
 # Ignore errors for snprintf truncation
 WERROR_FLAGS += -Wno-format-truncation
+# gcc changed default behavior for tentative definitions
+WERROR_FLAGS += -fcommon
 endif
+
+
 
 export CC AS AR LD OBJCOPY OBJDUMP STRIP READELF
 export TOOLCHAIN_CFLAGS TOOLCHAIN_LDFLAGS TOOLCHAIN_ASFLAGS
